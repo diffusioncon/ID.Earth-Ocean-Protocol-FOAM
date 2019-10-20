@@ -49,7 +49,7 @@ export const actions = {
 
     iRebellion = new iWeb3.eth.Contract(
       abi,
-      '0x0b6fce6075a9d4ad34e5565fedf7c495a2d82c1a'
+      '0x6eb9d3f2811884e3583f2a707b9635bf8e16dec5'
     )
 
     commit('SET_ADDRESS', address)
