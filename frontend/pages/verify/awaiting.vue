@@ -7,7 +7,7 @@
 
       <div class="w-full flex items-center flex-col mt-12">
 
-        <button-primary @click="modal = true">Get Verified</button-primary>
+        <button-primary @click="verify">Get Verified</button-primary>
 
       <p class="mt-4 text-primary font-bold text-sm">more about privacy</p>
     </div>
@@ -38,6 +38,16 @@ export default {
     },
     awaiting() {
       return this.$store.state.chain.rebel.confCount
+    }
+  },
+
+  methods: {
+    verify() {
+      const id = this.img.split('/')
+      const img = id[id.length - 1].split('.')[0]
+      this.$store.dispatch('chain/register', img)
+
+      this.modal = true
     }
   },
 

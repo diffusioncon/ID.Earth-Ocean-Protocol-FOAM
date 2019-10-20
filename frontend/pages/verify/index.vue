@@ -50,10 +50,6 @@ export default {
       }
       })
 
-      const id = data.data.link.split('/')
-      const img = id[id.length - 1].split('.')[0]
-      this.$store.dispatch('chain/register', img)
-
       this.$store.commit('verify/SET_IMG', data.data.link)
 
       this.$router.push('verify/awaiting')

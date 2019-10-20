@@ -8,7 +8,7 @@ export const mutations = {
     state.id = id
   },
 
-  SET_IMG({ state }, img) {
+  SET_IMG(state, img) {
     state.img = img
   }
 }
