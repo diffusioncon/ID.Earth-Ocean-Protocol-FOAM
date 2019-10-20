@@ -64,22 +64,23 @@ export const actions = {
 
     console.log(rebel)
 
-    if (rebel.confCount === '0') {
-      this.$router.push('/verify')
-    }
+    // if (rebel.confCount === '0') {
+    //   this.$router.push('/verify')
+    // }
 
-    if (rebel.confCount === '1') {
-      this.$router.push('/verify/awaiting')
-    }
+    // if (rebel.confCount === '1') {
+    //   this.$router.push('/verify/awaiting')
+    // }
 
-    if (rebel.confCount === '3') {
-      this.$router.push('/dashboard')
-    }
+    // if (rebel.confCount === '3') {
+    //   this.$router.push('/dashboard')
+    // }
   },
 
   async register({ commit, state, dispatch }, img) {
-    const hexImg = '0xafafafafaf'
-    await iRebellion.methods.signup(hexImg).send({
+    const hexImg = hexEncode(img)
+    const hex = `0x${hexImg}`
+    await iRebellion.methods.signup(hex).send({
       from: address
     })
 
@@ -93,6 +94,16 @@ function hex2a(hexx) {
   for (let i = 0; i < hex.length && hex.substr(i, 2) !== '00'; i += 2)
     str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
   return str
+}
+
+function hexEncode(str){
+  var arr1 = [];
+	for (var n = 0, l = str.length; n < l; n ++)
+     {
+		var hex = Number(str.charCodeAt(n)).toString(16);
+		arr1.push(hex);
+	 }
+	return arr1.join('');
 }
 
 function getTransactionReceiptMined(txHash, interval) {

@@ -1,7 +1,7 @@
 <template>
-  <div class="m-16 rounded shadow-lg relative">
-    <img :src="img" :class="{rounded: defaultImg}">
-    <div v-if="defaultImg" class="absolute right-0 bottom-0">
+  <div class="p-8 flex justify-center items-center rounded-lg shadow-xl bg-white z-10 max-h relative">
+    <img :src="img" :class="{'rounded-full': !defaultImg}">
+    <div v-if="!defaultImg" class="absolute pos">
       <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d)">
       <path d="M35 51C46.0457 51 55 42.0457 55 31C55 19.9543 46.0457 11 35 11C23.9543 11 15 19.9543 15 31C15 42.0457 23.9543 51 35 51Z" fill="#5351FD"/>
@@ -36,12 +36,19 @@ export default {
 
   computed: {
     defaultImg() {
-      return this.img !== '/default-img.svg'
+      return this.img === '/default-img.svg'
     }
   },
 }
 </script>
 
 <style>
+.max-h {
+  max-height: 20rem;
+}
 
+.pos {
+  bottom: 30px;
+  right: 40px;
+}
 </style>

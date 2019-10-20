@@ -1,6 +1,6 @@
 export const state = () => ({
   id: '',
-  img: ''
+  img: '/me.jpg'
 })
 
 export const mutations = {

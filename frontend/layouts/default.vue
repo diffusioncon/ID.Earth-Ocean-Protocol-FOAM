@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen font-special relative">
-    <c-header></c-header>
-    <nuxt class="absolute h-full inset-x-0" />
+  <div class="max-h-screen font-special relative">
+    <c-header class="absolute w-screen h-screen"></c-header>
+    <nuxt class="h-full z-10 relative" />
   </div>
 </template>
 

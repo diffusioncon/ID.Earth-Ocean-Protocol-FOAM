@@ -1,36 +1,49 @@
 <template>
-  <div class="text-center m-4">
+  <div>
+    <headerSpacer />
+    <card class="m-6 -mt-48" :img="img" />
 
-    <p class="text-xl my-2">Identity Verification</p>
+    <p class="text-center mx-5 text-sm mt-12">You Uploaded sucessfullly a picture! No worrys, it is stored in a secure data container. After Verification an AI makes sure that there isn’t any duplicate.</p>
 
-    <p class="text-gray-400 my-2">let your buddys scan this QR Code </p>
+      <div class="w-full flex items-center flex-col mt-12">
 
-    <p class="my-4">{{ this.$store.state.chain.address }}</p>
+        <button-primary @click="modal = true">Get Verified</button-primary>
 
-    <verification :id="rebel.budy1" index="1"/>
+      <p class="mt-4 text-primary font-bold text-sm">more about privacy</p>
+    </div>
 
-    <verification :id="rebel.budy2" index="2" class="mt-4"/>
+    <awaiting-modal v-if="modal" @close="modal = false" />
   </div>
 </template>
 
 <script>
-import QRCode from 'qrcode'
-import verification from '~/components/verification'
+import card from '~/components/card'
+import headerSpacer from '~/components/headerSpacer'
+import buttonPrimary from '~/components/buttonPrimary'
+import awaitingModal from '~/components/awaiting'
+
 export default {
-  components: {
-    verification
+
+  mounted() {
+    this.$store.commit('SET_HEADER', 'get verified')
   },
+
+  data: () => ({
+    modal: true
+  }),
+
   computed: {
-    rebel() {
-      return this.$store.state.chain.rebel
+    img() {
+      return this.$store.state.verify.img
     }
   },
-  mounted() {
-    const interval = setInterval(() => {
-      this.$store.dispatch('chain/getRebel')
-    }, 1000);
-  },
+
+  components: {
+    card,
+    headerSpacer,
+    buttonPrimary,
+    awaitingModal,
+  }
 }
 </script>
 
-<style></style>
