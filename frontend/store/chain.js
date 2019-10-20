@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import abi from '~/plugins/abi.json'
 import Web3 from 'web3'
+import abi from '~/plugins/abi.json'
 
 export const state = () => ({
   address: '',
@@ -9,8 +9,8 @@ export const state = () => ({
   rebel: {
     img: '',
     confCount: '0',
-    buy1: '',
-    buy2: ''
+    budy1: '',
+    budy2: ''
   }
 })
 
@@ -28,10 +28,11 @@ export const mutations = {
   },
 
   SET_REBEL(state, data) {
-    state.rebel.img = data.img
+    const imgA = hex2a(data.img.replace('0x', ''))
+    state.rebel.img = 'https://i.imgur.com/'.imgA
     state.rebel.confCount = data.confCount
-    state.rebel.buy1 = data.buy1
-    state.rebel.buy2 = data.buy2
+    state.rebel.budy1 = data.budy1
+    state.rebel.budy2 = data.budy2
   }
 }
 
@@ -39,7 +40,7 @@ let iRebellion = {}
 let address = ''
 
 export const actions = {
-  async init({commit}) {
+  async init({ commit }) {
     const injectedProvider = window.ethereum
     const addresses = await injectedProvider.enable()
     const iWeb3 = new Web3(injectedProvider)
@@ -56,5 +57,22 @@ export const actions = {
     const rebel = await this.$rebellion.methods.rebels(address).call()
 
     commit('SET_REBEL', rebel)
+  },
+
+  async register({ commit, state, dispatch }, img) {
+    const hexImg = '0xafafafafaf'
+    await iRebellion.methods.signup(hexImg).send({
+      from: address
+    })
+
+    dispatch(this.getRebel)
   }
+}
+
+function hex2a(hexx) {
+  const hex = hexx.toString() // force conversion
+  let str = ''
+  for (let i = 0; i < hex.length && hex.substr(i, 2) !== '00'; i += 2)
+    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+  return str
 }

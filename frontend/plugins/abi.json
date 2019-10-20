@@ -1,155 +1,155 @@
 [
   {
-  "constant": true,
-  "inputs": [
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "rebels",
+    "outputs": [
+      {
+        "name": "img",
+        "type": "bytes32"
+      },
+      {
+        "name": "confCount",
+        "type": "uint256"
+      },
+      {
+        "name": "budy1",
+        "type": "address"
+      },
+      {
+        "name": "budy2",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
   {
-  "name": "",
-  "type": "address"
+    "inputs": [
+      {
+        "name": "_genesisBuddy1",
+        "type": "address"
+      },
+      {
+        "name": "_genesisImg1",
+        "type": "bytes32"
+      },
+      {
+        "name": "_genesisBuddy2",
+        "type": "address"
+      },
+      {
+        "name": "_genesisImg2",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "rebel",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "pic",
+        "type": "bytes32"
+      }
+    ],
+    "name": "Application",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "rebel",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "budy1",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "budy2",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "pic",
+        "type": "bytes32"
+      }
+    ],
+    "name": "Confirmed",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_img",
+        "type": "bytes32"
+      }
+    ],
+    "name": "signup",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "applicant",
+        "type": "address"
+      }
+    ],
+    "name": "confirm",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "account1",
+        "type": "address"
+      },
+      {
+        "name": "account2",
+        "type": "address"
+      }
+    ],
+    "name": "challengeRebel",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "resolveChallenge",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
-  ],
-  "name": "rebels",
-  "outputs": [
-  {
-  "name": "img",
-  "type": "bytes32"
-  },
-  {
-  "name": "confCount",
-  "type": "uint256"
-  },
-  {
-  "name": "budy1",
-  "type": "address"
-  },
-  {
-  "name": "budy2",
-  "type": "address"
-  }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-  },
-  {
-  "inputs": [
-  {
-  "name": "_genesisBuddy1",
-  "type": "address"
-  },
-  {
-  "name": "_genesisImg1",
-  "type": "bytes32"
-  },
-  {
-  "name": "_genesisBuddy2",
-  "type": "address"
-  },
-  {
-  "name": "_genesisImg2",
-  "type": "bytes32"
-  }
-  ],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "constructor"
-  },
-  {
-  "anonymous": false,
-  "inputs": [
-  {
-  "indexed": true,
-  "name": "rebel",
-  "type": "address"
-  },
-  {
-  "indexed": false,
-  "name": "pic",
-  "type": "bytes32"
-  }
-  ],
-  "name": "Application",
-  "type": "event"
-  },
-  {
-  "anonymous": false,
-  "inputs": [
-  {
-  "indexed": true,
-  "name": "rebel",
-  "type": "address"
-  },
-  {
-  "indexed": true,
-  "name": "budy1",
-  "type": "address"
-  },
-  {
-  "indexed": true,
-  "name": "budy2",
-  "type": "address"
-  },
-  {
-  "indexed": false,
-  "name": "pic",
-  "type": "bytes32"
-  }
-  ],
-  "name": "Confirmed",
-  "type": "event"
-  },
-  {
-  "constant": false,
-  "inputs": [
-  {
-  "name": "_img",
-  "type": "bytes32"
-  }
-  ],
-  "name": "signup",
-  "outputs": [],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "function"
-  },
-  {
-  "constant": false,
-  "inputs": [
-  {
-  "name": "applicant",
-  "type": "address"
-  }
-  ],
-  "name": "confirm",
-  "outputs": [],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "function"
-  },
-  {
-  "constant": false,
-  "inputs": [
-  {
-  "name": "account1",
-  "type": "address"
-  },
-  {
-  "name": "account2",
-  "type": "address"
-  }
-  ],
-  "name": "challengeRebel",
-  "outputs": [],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "function"
-  },
-  {
-  "constant": false,
-  "inputs": [],
-  "name": "resolveChallenge",
-  "outputs": [],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "function"
-  }
-  ]
+]

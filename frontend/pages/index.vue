@@ -9,6 +9,7 @@
     </div>
 
     <button @click="call">Let's go</button>
+    <button @click="register">Let's go</button>
   </div>
 </template>
 
@@ -22,9 +23,12 @@ export default {
     this.$store.dispatch('chain/init')
   },
   methods: {
-    async call() {
+    call() {
       this.$store.dispatch('chain/getRebel')
+    },
+    register() {
+      this.$store.dispatch('chain/register')
     }
-  },
+  }
 }
 </script>
