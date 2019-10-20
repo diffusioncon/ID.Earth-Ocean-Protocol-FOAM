@@ -28,11 +28,12 @@ export const mutations = {
   },
 
   SET_REBEL(state, data) {
+    console.log(data)
     const imgA = hex2a(data.img.replace('0x', ''))
     state.rebel.img = 'https://i.imgur.com/'.imgA
     state.rebel.confCount = data.confCount
-    state.rebel.budy1 = data.budy1.contains('0x00') ? '' : data.budy1
-    state.rebel.budy2 = data.budy2.contains('0x00') ? '' : data.budy2
+    state.rebel.budy1 = data.budy1.includes('0x00') ? '' : data.budy1
+    state.rebel.budy2 = data.budy2.includes('0x00') ? '' : data.budy2
   }
 }
 

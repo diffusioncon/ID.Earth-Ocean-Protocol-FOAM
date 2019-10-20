@@ -9,7 +9,7 @@
 
     <verification :id="rebel.budy1" index="1"/>
 
-    <verification :id="rebel.budy2" index="2"/>
+    <verification :id="rebel.budy2" index="2" class="mt-4"/>
   </div>
 </template>
 

@@ -1,10 +1,11 @@
 <template>
-  <div class="bg-gray-500 rounded w-full">
-    <div v-if="!id">
+  <div class="background-ver text-color-ver rounded w-full text-left py-1 px-4">
+    <div v-if="finalId">
       <span>{{ index }}. Verification</span>
     </div>
 
-    <div else class="bg-secondary flex justify-between">
+  <template v-else>
+    <div class="bg-secondary flex justify-between">
       <span>{{id}}</span>
       <span>
         <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +13,9 @@
       </svg>
   </span>
     </div>
+    </template>
   </div>
+
 </template>
 
 <script>
@@ -26,8 +29,22 @@ export default {
       type: String,
       required: true
     }
+  },
+
+  computed: {
+    finalId() {
+      return this.id === ''
+    }
   }
 }
 </script>
 
-<style></style>
+<style>
+.background-ver {
+  background: rgba(196, 196, 196, 0.25)
+}
+
+.text-color-ver {
+  color: rgba(59, 59, 59, 0.25);
+}
+</style>
