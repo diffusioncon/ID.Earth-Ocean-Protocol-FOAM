@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Display a map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+#marker {
+background-image: url('https://i.imgur.com/BBcy6Wc.jpg');
+background-size: cover;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.mapboxgl-popup {
+max-width: 200px;
+}
+</style>
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+
+function refine_interval(interval, cd, mask) {
+  if (cd & mask) {
+    interval[0] = (interval[0] + interval[1]) / 2;
+  } else {
+    interval[1] = (interval[0] + interval[1]) / 2;
+  }
+}
+
+function decodeGeoHash(geohash) {
+  var BITS = [16, 8, 4, 2, 1];
+  var BASE32 = '0123456789bcdefghjkmnpqrstuvwxyz';
+  var is_even = 1;
+  var lat = [];
+  var lon = [];
+  lat[0] = -90.0;
+  lat[1] = 90.0;
+  lon[0] = -180.0;
+  lon[1] = 180.0;
+  var lat_err = 90.0;
+  var lon_err = 180.0;
+  for (var i = 0; i < geohash.length; i++) {
+    var c = geohash[i];
+    var cd = BASE32.indexOf(c);
+    for (var j = 0; j < 5; j++) {
+      var mask = BITS[j];
+      if (is_even) {
+        lon_err /= 2;
+        refine_interval(lon, cd, mask);
+      } else {
+        lat_err /= 2;
+        refine_interval(lat, cd, mask);
+      }
+      is_even = !is_even;
+    }
+  }
+  lat[2] = (lat[0] + lat[1]) / 2;
+  lon[2] = (lon[0] + lon[1]) / 2;
+  return { latitude: lat, longitude: lon};
+}
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2xlYXJ3b29kIiwiYSI6ImNrMXlzdGk3YjBvcGUzb3FnNnEydG9ucG8ifQ.lqxbwxb7f7wg5l9VEk-VBA';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+center: [13.446541,52.494169], // starting position [lng, lat]
+zoom: 16.5 // starting zoom
+});
+locationLarge = []
+function processData(data){
+  var popup = new mapboxgl.Popup({ offset: 25 })
+  .setText(data.data.name+ ' '+ data.data.description);
+  decodeGHash = decodeGeoHash(data.data.geohash);
+  location = [decodeGHash["longitude"][1],decodeGHash["latitude"][1]];
+  var el = document.createElement('div');
+  el.id = 'marker';
+  console.log(locationLarge);
+
+  new mapboxgl.Marker(el)
+  .setLngLat(location)
+  .setPopup(popup) // sets a popup on this marker
+  .addTo(map);
+  // create the marker
+}
+function getData (callback){
+$.getJSON("https://map-api-direct.foam.space/poi/details/4a72223b69e805850972565f7f8f74363c29d2300aa77ca800a4ec002e7078c5", function(data){
+console.log(data);
+// create the popup
+callback(data);
+});
+}
+getData(processData);
+
+</script>
+
+</body>
+</html>
