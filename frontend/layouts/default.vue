@@ -1,14 +1,18 @@
 <template>
-  <div class="h-screen font-special">
-    <div class="w-full h-10 bg-teal-700"></div>
-    <nuxt class="max-h-90-screen" />
+  <div class="h-screen font-special relative">
+    <c-header></c-header>
+    <nuxt class="absolute h-full inset-x-0" />
   </div>
 </template>
 
 <script>
+import cHeader from '~/components/header'
 export default {
   mounted() {
     this.$store.dispatch('chain/init')
   },
+  components: {
+    cHeader
+  }
 }
 </script>

@@ -1,9 +1,14 @@
 export const state = () => ({
   id: '',
-  image: ''
+  image: '',
+  header: 'upload image',
 })
 
-export const mutations = {}
+export const mutations = {
+  SET_HEADER(state, text) {
+    state.header = text
+  }
+}
 
 export const actions = {
   async upload_image({ state }, files) {
