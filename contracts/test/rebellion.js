@@ -1,4 +1,5 @@
 const Rebellion = artifacts.require('Rebellion');
+const IOceanDIDRegistry = artifacts.require('IOceanDIDRegistry');
 
 contract('Rebellion', (accounts) => {
 
@@ -6,13 +7,11 @@ contract('Rebellion', (accounts) => {
     let hex;
     try{
       hex = unescape(encodeURIComponent(str))
-      .split('').map(function(v){
-        return v.charCodeAt(0).toString(16)
-      }).join('')
+      .split('').map((v) => v.charCodeAt(0).toString(16)).join('')
     }
     catch(e){
       hex = str
-      console.log('invalid text input: ' + str)
+      console.log(`invalid text input: ${  str}`)
     }
     return `0x${hex}`;
   }
@@ -25,12 +24,13 @@ contract('Rebellion', (accounts) => {
   let rebellion;
 
   before(async () => {
-    rebellion = await Rebellion.new(budy1, toHex(pic1), budy2, toHex(pic2));
+    const reg = await IOceanDIDRegistry.new();    
+    rebellion = await Rebellion.new(budy1, toHex(pic1), budy2, toHex(pic2), reg.address, accounts[9]);
   });
 
   it('is joinable', async () => {
     const pic3 = 'http://catpic.com/1234';
-    await rebellion.signup(toHex(pic3));
+    await rebellion.signup(toHex(pic3), toHex(pic3), toHex(pic3));
     let rebelData = await rebellion.rebels(rebel);
     assert.equal(rebelData.confCount, 1);
     await rebellion.confirm(rebel, {from: budy1});
