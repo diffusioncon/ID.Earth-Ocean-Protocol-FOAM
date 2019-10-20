@@ -3,7 +3,7 @@ import vuex from 'vuex'
 import abi from './abi.json'
 
 export default (ctx, inject) => {
-  const web3 = new Web3('wss://goerli.infura.io/ws/v3/f039330d8fb747e48a7ce98f51400d65')
+  const web3 = new Web3('wss://rinkeby.infura.io/ws/v3/f039330d8fb747e48a7ce98f51400d65')
 
   const rebellion = new web3.eth.Contract(
     abi,
