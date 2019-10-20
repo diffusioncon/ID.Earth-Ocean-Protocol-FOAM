@@ -4,3 +4,11 @@
     <nuxt class="max-h-90-screen" />
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.$store.dispatch('chain/init')
+  },
+}
+</script>

@@ -23,6 +23,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "eslint-plugin-import": "^2.18.2",
     "nuxt": "^2.0.0",
+    "qrcode": "^1.4.2",
     "web3": "^1.2.1"
   },
   "devDependencies": {

@@ -19,13 +19,8 @@ export default {
   components: {
     buttonPrimary
   },
-  mounted() {
-    this.$store.dispatch('chain/init')
-  },
+
   methods: {
-    call() {
-      this.$store.dispatch('chain/getRebel')
-    },
     register() {
       this.$store.dispatch('chain/register')
     }
