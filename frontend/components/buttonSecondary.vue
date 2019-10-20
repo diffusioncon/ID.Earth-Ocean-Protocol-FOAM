@@ -1,5 +1,5 @@
 <template>
-  <default-button class="bg-secondary">
+  <default-button     @click="$emit('click', $event)" class="bg-secondary">
     <slot></slot>
   </default-button>
 </template>

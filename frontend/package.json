@@ -20,8 +20,10 @@
     }
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "eslint-plugin-import": "^2.18.2",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "web3": "^1.2.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0",

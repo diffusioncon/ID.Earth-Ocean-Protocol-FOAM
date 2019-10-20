@@ -1,7 +1,7 @@
 <template>
   <button
     class="text-white shadow-md px-12 py-1 rounded-lg uppercase"
-    @click="emit('clicked', $event)"
+    @click="$emit('click', $event)"
   >
     <slot />
   </button>

@@ -8,7 +8,7 @@
       You want to join?
     </div>
 
-    <button-primary>Let's go</button-primary>
+    <button @click="call">Let's go</button>
   </div>
 </template>
 
@@ -17,6 +17,14 @@ import buttonPrimary from '~/components/buttonSecondary'
 export default {
   components: {
     buttonPrimary
-  }
+  },
+  mounted() {
+    this.$store.dispatch('chain/init')
+  },
+  methods: {
+    async call() {
+      this.$store.dispatch('chain/getRebel')
+    }
+  },
 }
 </script>
