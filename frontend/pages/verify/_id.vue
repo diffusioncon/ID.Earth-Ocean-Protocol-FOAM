@@ -24,7 +24,7 @@ export default {
   },
 
   created() {
-    this.$store.state.dispatch('verify/init', this.id)
+    this.$store.dispatch('verify/init', this.id)
   },
 
   methods: {
