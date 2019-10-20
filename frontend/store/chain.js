@@ -30,7 +30,7 @@ export const mutations = {
   SET_REBEL(state, data) {
     console.log(data)
     const imgA = hex2a(data.img.replace('0x', ''))
-    state.rebel.img = 'https://i.imgur.com/'.imgA
+    state.rebel.img = `https://i.imgur.com/${imgA}.jpg`
     state.rebel.confCount = data.confCount
     state.rebel.budy1 = data.budy1.includes('0x00') ? '' : data.budy1
     state.rebel.budy2 = data.budy2.includes('0x00') ? '' : data.budy2
@@ -64,17 +64,17 @@ export const actions = {
 
     console.log(rebel)
 
-    // if (rebel.confCount === '0') {
-    //   this.$router.push('/verify')
-    // }
+    if (rebel.confCount === '0') {
+      this.$router.push('/verify')
+    }
 
-    // if (rebel.confCount === '1') {
-    //   this.$router.push('/verify/awaiting')
-    // }
+    if (rebel.confCount === '1') {
+      this.$router.push('/verify/awaiting')
+    }
 
-    // if (rebel.confCount === '3') {
-    //   this.$router.push('/dashboard')
-    // }
+    if (rebel.confCount === '3') {
+      this.$router.push('/dashboard')
+    }
   },
 
   async register({ commit, state, dispatch }, img) {

@@ -29,14 +29,26 @@ export default {
   },
 
   data: () => ({
-    modal: true
+    modal: false
   }),
 
   computed: {
     img() {
       return this.$store.state.verify.img
+    },
+    awaiting() {
+      return this.$store.state.chain.rebel.confCount
     }
   },
+
+  watch: {
+    awaiting(newVal) {
+      if (newVal === '1' || newVal === '2') {
+        this.modal = true
+      }
+    }
+  },
+
 
   components: {
     card,

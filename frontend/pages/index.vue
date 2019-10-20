@@ -8,8 +8,7 @@
       You want to join?
     </div>
 
-    <button @click="call">Let's go</button>
-    <button @click="register">Let's go</button>
+    <nuxt-link to="verify/index">Let's go</nuxt-link>
   </div>
 </template>
 

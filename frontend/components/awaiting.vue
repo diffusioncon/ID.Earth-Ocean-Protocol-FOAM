@@ -6,11 +6,9 @@
     <div class="mx-5 flex items-center flex-col mb-8">
     <p class="text-lg my-2 font-bold">Identity Verification</p>
 
-    <p class="text-gray-400 my-2 text-sm">let your buddys scan this QR code</p>
+    <p class="text-gray-400 my-2 text-sm text-center">let your buddys scan this QR code</p>
 
     <qr></qr>
-
-    <!-- <span class="my-4 wrap-shit w-4 text-xs">{{ this.$store.state.chain.address }}</span> -->
 
     <verification :id="rebel.budy1" class="mt-4" index="1"/>
 

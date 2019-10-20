@@ -6,7 +6,7 @@
 
   <template v-else>
     <div class="bg-secondary flex justify-between items-center text-primary">
-      <span>{{ id }}</span>
+      <span>{{ id.substring(0, 16) }}</span>
       <span>
         <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2 6L6.33333 10L15 2" stroke="#5351FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
